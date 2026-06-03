@@ -11,7 +11,6 @@ use Helori\PhpSign\Elements\Transaction;
 use Helori\PhpSign\Elements\SignerResult;
 use Helori\PhpSign\Elements\Webhook;
 
-use Symfony\Component\Dotenv\Dotenv;
 use Carbon\Carbon;
 
 
@@ -234,8 +233,8 @@ class PhpSignTest extends TestCase
             ];
         }else if($driverName === 'yousign'){
             $driverConfig = [
-                'api_key' => $_ENV['YOUSIGN_API_KEY'],
-                'mode' => $_ENV['SIGNATURE_MODE'],
+                'api_key' => '<your_api_key>',
+                'mode' => '<enviroment_type>',
             ];
         }else if($driverName === 'yousignv3'){
             $driverConfig = [
