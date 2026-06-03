@@ -29,6 +29,14 @@ class Signature
     protected $label;
 
     /**
+     * Optional handwritten-like mention displayed next to the signature
+     * (typically « Lu et approuvé »). Empty disables it.
+     *
+     * @var string
+     */
+    protected $mention = '';
+
+    /**
      * The page of the document on which the signature should appear
      *
      * @var int
@@ -134,6 +142,28 @@ class Signature
     public function setLabel(string $label)
     {
         return $this->label = $label;
+    }
+
+    /**
+     * Get the optional mention text rendered next to the signature
+     * (e.g. « Lu et approuvé »). Empty string means none.
+     *
+     * @return string
+     */
+    public function getMention()
+    {
+        return $this->mention;
+    }
+
+    /**
+     * Set the optional mention text rendered next to the signature.
+     *
+     * @param  string  $mention
+     * @return string
+     */
+    public function setMention(string $mention)
+    {
+        return $this->mention = $mention;
     }
 
     /**

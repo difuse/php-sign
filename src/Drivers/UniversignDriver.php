@@ -129,6 +129,12 @@ class UniversignDriver implements DriverInterface
                         "signerIndex" => null,
                     ];
 
+                    // Universign renders the mention next to the signature.
+                    // Used for « Lu et approuvé » or any similar custom text.
+                    if($scSignature->getMention() !== ''){
+                        $signature["mention"] = new Value($scSignature->getMention(), "string");
+                    }
+
                     $signerIndex = null;
                     foreach($scenario->getSigners() as $index => $scSigner){
                         if($scSigner->getId() === $scSignature->getSignerId()){
