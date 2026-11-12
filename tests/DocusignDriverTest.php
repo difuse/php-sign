@@ -160,6 +160,7 @@ class DocusignDriverTest extends TestCase
         $notification = $envelope['eventNotification'];
         $this->assertSame('https://wime.test/webhook/docusign', $notification['url']);
         $this->assertSame('true', $notification['includeHMAC']);
+        $this->assertSame('SIM', $notification['deliveryMode']);
         $this->assertSame('true', $notification['requireAcknowledgment']);
         $this->assertContains('envelope-completed', $notification['events']);
         $this->assertSame(['version' => 'restv2.1', 'format' => 'json'], $notification['eventData']);

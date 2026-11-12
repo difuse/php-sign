@@ -22,8 +22,9 @@ use PHPUnit\Framework\TestCase;
  * - DOCUSIGN_TEST_EMAIL, DOCUSIGN_TEST_PHONE: the test signer, who gets the code
  *
  * Optional: DOCUSIGN_ACCOUNT_ID, DOCUSIGN_REDIRECT_URI (prints the consent URL
- * when consent is missing), DOCUSIGN_KEEP_ENVELOPE=1 to leave the envelope
- * open and sign it from the printed URL.
+ * when consent is missing), DOCUSIGN_WEBHOOK_URL (Connect sends the envelope
+ * events there), DOCUSIGN_KEEP_ENVELOPE=1 to leave the envelope open and sign
+ * it from the printed URL.
  */
 class DocusignIntegrationTest extends TestCase
 {
@@ -103,6 +104,10 @@ class DocusignIntegrationTest extends TestCase
         $scenario->setSuccessUrl('https://example.com/return');
         $scenario->setLang('fr');
         $scenario->setInvitationMode(Scenario::INVITATION_MODE_CHAIN);
+
+        if((string) getenv('DOCUSIGN_WEBHOOK_URL') !== ''){
+            $scenario->setStatusUrl((string) getenv('DOCUSIGN_WEBHOOK_URL'));
+        }
 
         return $scenario;
     }

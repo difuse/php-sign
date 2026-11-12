@@ -446,6 +446,8 @@ class DocusignDriver implements DriverInterface, SupportsSigningUrl, SupportsCer
                 'loggingEnabled' => 'true',
                 'requireAcknowledgment' => 'true',
                 'includeHMAC' => 'true',
+                // JSON SIM messages: Docusign refuses "events" without it
+                'deliveryMode' => 'SIM',
                 'events' => self::WEBHOOK_EVENTS,
                 'eventData' => [
                     'version' => 'restv2.1',
